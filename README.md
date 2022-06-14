@@ -1,23 +1,23 @@
 ## Material_UI_TextFields
-# Examples
-# Features
-# Parameters
+### Examples
+### Features
+### Parameters
 textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
-## TextFieldOptions
+#### TextFieldOptions
 |Parameter|type|Remarks|
 |-|-|-|
 |textFieldType|[TextFieldType*](README.md#textfieldtype)|type of textfield to use: 1)Filled; 2)Outlined|
 |label|string|label of textfield|
 |leadingIcon|Resource|leading icon to be used|
 |trailing icon|Resource|trailing icon to be used|
-|chracterCounter|boolean|characterCounter enabled when true|
+|characterCounter|boolean|characterCounter enabled when true|
 |maxCharacters|number|max number of characters allowed|
 |helperText|string|used as a hint for input text|
 |textInputOptions|[TextInputOptions](README.md#textinputoptions)|text input options|
-## TextFieldType
+#### TextFieldType
     1. Filled
     2. Outlined
-## TextInputOptions
+#### TextInputOptions
 |Options|type|Remarks|
 |-|-|-|
 |id|string|id of textfield|
