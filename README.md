@@ -1,6 +1,5 @@
 ## Material_UI_TextFields
 ### Features
-
    1. Labeled and Non-Labeled TextFields
    2. Assistive elements like Helper Text and Character Counter
    3. Leading and Trailing Icons to help user to understand the type of input expected
@@ -10,8 +9,11 @@
 ### Import and install
 ### APIs
 ### Parameters
+   
    textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
+   
 #### TextFieldOptions
+
    |Parameter|type|Remarks|
    |-|-|-|
    |textFieldType|[TextFieldType*](README.md#textfieldtype)|type of textfield to use: 1)Filled; 2)Outlined|
@@ -26,6 +28,7 @@
 #### TextFieldType
     1. Filled
     2. Outlined
+    
 #### TextInputOptions
    |Options|type|Remarks|
    |-|-|-|
@@ -45,5 +48,12 @@
    |maxCharacters|number|maximum number of allowed characters|
    
 #### Events
+   |Event|Description|
+   |-|-|
+   |onLeadingIconClick(callBack:(event:[ClickEvent](https://developer.harmonyos.com/en/docs/documentation/doc-references/ts-universal-events-click-0000001111581270#EN-US_TOPIC_0000001111581270__li155675712535))=>void)|triggered when leading icon is being clicked|
+   |onTrailingIconClick(callBack:(event:[ClickEvent](https://developer.harmonyos.com/en/docs/documentation/doc-references/ts-universal-events-click-0000001111581270#EN-US_TOPIC_0000001111581270__li155675712535))=>void)|triggered when trailing icon is being clicked|
+   |onChange(callBack:(event:value?:string=>void|triggered when textfield input changes|
+   |onSubmit(callBack:(enterKey?:[EnterKeyType](https://developer.harmonyos.com/en/docs/documentation/doc-references/ts-basic-components-textinput-0000001233397495#EN-US_TOPIC_0000001233397495__li1231618102427))=>void|triggered when input of textfield is submitted|
+   |onEditChange(callBack:(isEditing:boolean)=>void)|triggered when user stops editing|
 ### Usage
 ### License
