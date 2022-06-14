@@ -6,6 +6,9 @@
    3. Leading and Trailing Icons to help user to understand the type of input expected
    4. Error Message assistance to check and verify the type of input required
 
+### Dependencies
+### Import and install
+### APIs
 ### Parameters
 textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
 #### TextFieldOptions
@@ -39,5 +42,6 @@ textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
 |enterKeyType|[EnterKeyType](https://developer.harmonyos.com/en/docs/documentation/doc-references/ts-basic-components-textinput-0000001233397495#EN-US_TOPIC_0000001233397495__li1231618102427)|enter key functionality|
 |caretColor|Color|color of cursor when input is being edited|
 |maxCharacters|number|maximum number of allowed characters|
-
-### Examples
+#### Events
+### Usage
+### License
