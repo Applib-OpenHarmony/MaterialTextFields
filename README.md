@@ -6,7 +6,7 @@ textFieldOptions:[TextFieldOptions](README.md/#TextFieldOptions)
 ## TextFieldOptions
 |Parameter|type|Remarks|
 |-|-|-|
-|textFieldType|[TextFieldType*](https://github.com/neeraj-patidar/CourseraTest/blob/main/README.md#textfieldtype)|type of textfield to use: 1)Filled; 2)Outlined|
+|textFieldType|[TextFieldType*](README.md#textfieldtype)|type of textfield to use: 1)Filled; 2)Outlined|
 |label|string|label of textfield|
 |leadingIcon|Resource|leading icon to be used|
 |trailing icon|Resource|trailing icon to be used|
