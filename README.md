@@ -1,16 +1,16 @@
 ## Material_UI_TextFields
 ### Features
-   1. Labeled and Non-Labeled TextFields
-   2. Assistive elements like Helper Text and Character Counter
-   3. Leading and Trailing Icons to help user to understand the type of input expected
-   4. Error Message assistance to check and verify the type of input required
+      1. Labeled and Non-Labeled TextFields
+      2. Assistive elements like Helper Text and Character Counter
+      3. Leading and Trailing Icons to help user to understand the type of input expected
+      4. Error Message assistance to check and verify the type of input required
 
 ### Dependencies
 ### Import and install
 ### APIs
 ### Parameters
    
-   textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
+      textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
    
 #### TextFieldOptions
 
@@ -24,6 +24,8 @@
    |maxCharacters|number|max number of characters allowed|
    |helperText|string|used as a hint for input text|
    |textInputOptions|[TextInputOptions](README.md#textinputoptions)|text input options|
+   
+> Note: Parameters marked with '*' are mandatory.
    
 #### TextFieldType
     1. Filled
