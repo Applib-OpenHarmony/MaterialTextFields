@@ -2,7 +2,7 @@
 # Examples
 # Features
 # Parameters
-textFieldOptions:[TextFieldOptions](https://github.com/neeraj-patidar/CourseraTest/edit/main/README.md#textfieldoptions)
+textFieldOptions:[TextFieldOptions](/#TextFieldOptions)
 ## TextFieldOptions
 |Parameter|type|Remarks|
 |-|-|-|
