@@ -14,6 +14,7 @@
       }
 ### Import and install
 ### APIs
+      TextField({textFieldParameters:TextFieldOptions})
 ### Parameters
 textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
    
@@ -58,6 +59,19 @@ textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
    |maxCharacters|number|maximum number of allowed characters|
    |invert|number|inverts the input image|
    
+#### Atrributes
+The following attributes are supported for TextFieldOptions:
+|Attribute|Description|
+|-|-|
+|setTextFIeldType(type:TextFieldType)|sets textfield type|
+|setLabel(label:string,labelWidth:number)|sets the label for textfield|
+|setHelperText(text:string)|setsthe helper text|
+|setCharacterCounter(enable:boolean,maxCharacters:number)|enables character counter and maximum allowed characters|
+|setIcons(leadingIcon:Resource,trailingIcon:Resource)|sets leading and trailing icons|
+|setTextInputOptions(textInputOptions:TextInputOptions)|sets the input text options|
+|setMargin(margin:Length or Padding)|sets the margin for textfield|
+|setPadding(padding:Length or Padding)|sets the padding for textfield|
+|setBorder(options:BorderOptions)|sets the border parameters for textfield|
 #### Events
    |Event|Description|
    |-|-|
@@ -68,4 +82,64 @@ textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
    |onEditChange(callBack:(isEditing:boolean)=>void)|triggered when user stops editing|
    |isValid(callback:(value?:string)=>{})|triggered when user stops editing, sold return an object of type: { valid:boolean,errorMessage:string}|
 ### Usage
+
+      import { TextField, TextFieldType, TextFieldOptions, TextInputOptions } from "@ohos/TextField"
+
+      @Entry
+      @Component
+      Component
+      struct Filled_sample
+      {
+        textInputOptions: TextInputOptions =
+          {
+            placeholderText:'@gmail.com',
+            enterKeyType:EnterKeyType.Search,
+            input:"neerajpatidar@gmail.com",
+            id:"mail-id1",
+            inputType:InputType.Number,
+            invert:5,
+            placeholderColor:Color.Brown,
+            placeholderFont:{size:15,style:FontStyle.Normal,family:"Arial",weight:FontWeight.Normal},
+            fontWeight:FontWeight.Bold,
+            fontStyle:FontStyle.Normal,
+            fontSize:15,
+            fontFamily:"Sans-serif",
+            fontColor:Color.Green,
+            caretColor:Color.Red
+          };
+
+        textFieldOptions: TextFieldOptions =
+          {
+            textFieldType:TextFieldType.Filled,
+            label:'User',
+            labelWidth: 35,
+            helperText: "Shouldn't be a mail-id",
+            trailingIcon: $r("app.media.clear"),
+            leadingIcon: $r('app.media.account'),
+            characterCounter:true,
+            maxCharacters:10,
+            textInputOptions:this.textInputOptions,
+            trailingIconClick:(event)=>{console.log("trail icon click event: "+ JSON.stringify(event))},
+            leadingIconClick:(event)=>{console.log("lead icon click event: "+ JSON.stringify(event))},
+            onChanged:()=>{},
+            editChanged:(isEditing)=>{console.log("edit change:"+isEditing)},
+            validate:()=>{return {valid:true,errorMessage:"error"}},
+            cut:()=>{},
+            copy:()=>{},
+            paste:()=>{},
+            submit:()=>{}
+          }
+          
+      build()
+        {
+          Flex({direction:FlexDirection.Column,justifyContent:FlexAlign.Center})
+          {
+            TextField(
+              {
+                textFieldParameters:this.textFieldOptions
+              });
+          }
+        }
+      }
+      
 ### License
