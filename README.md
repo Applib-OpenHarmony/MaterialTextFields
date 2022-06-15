@@ -124,9 +124,6 @@ The following attributes are supported for TextFieldOptions:
             onChanged:()=>{},
             editChanged:(isEditing)=>{console.log("edit change:"+isEditing)},
             validate:()=>{return {valid:true,errorMessage:"error"}},
-            cut:()=>{},
-            copy:()=>{},
-            paste:()=>{},
             submit:()=>{}
           }
           
