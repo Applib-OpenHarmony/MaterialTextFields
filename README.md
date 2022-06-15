@@ -80,7 +80,7 @@ The following attributes are supported for TextFieldOptions:
    |onChange(callBack:(event:value?:string=>void|triggered when textfield input changes|
    |onSubmit(callBack:(enterKey?:[EnterKeyType](https://developer.harmonyos.com/en/docs/documentation/doc-references/ts-basic-components-textinput-0000001233397495#EN-US_TOPIC_0000001233397495__li1231618102427))=>void|triggered when input of textfield is submitted|
    |onEditChange(callBack:(isEditing:boolean)=>void)|triggered when user stops editing|
-   |isValid(callback:(value?:string)=>{})|triggered when user stops editing, sold return an object of type: { valid:boolean,errorMessage:string}|
+   |isValid(callback:(value?:string)=>{})|triggered when user stops editing, should return an object of type: { valid:boolean,errorMessage:string}|
 ### Usage
 
       import { TextField, TextFieldType, TextFieldOptions, TextInputOptions } from "@ohos/TextField"
