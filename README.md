@@ -9,8 +9,7 @@
 ### Import and install
 ### APIs
 ### Parameters
-   
-      textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
+textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
    
 #### TextFieldOptions
 
