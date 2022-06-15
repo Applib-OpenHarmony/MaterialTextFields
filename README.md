@@ -6,6 +6,12 @@
       4. Error Message assistance to check and verify the type of input required
 
 ### Dependencies
+      Add following to the dependencies in package.json file of your project: "@ohos/TextField": "file:../TextField"
+            
+      "dependencies": {
+            ...
+            "@ohos/TextField": "file:../TextField"
+      }
 ### Import and install
 ### APIs
 ### Parameters
@@ -23,6 +29,9 @@ textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
    |maxCharacters|number|max number of characters allowed|
    |helperText|string|used as a hint for input text|
    |textInputOptions|[TextInputOptions](README.md#textinputoptions)|text input options|
+   |margin|Length or Padding|-|
+   |padding|Length or Padding|-|
+   |border|[BorderOptions](https://developer.harmonyos.com/en/docs/documentation/doc-references/ts-universal-attributes-border-0000001158261223)|-|
    
 > Note: Parameters marked with '*' are mandatory.
    
