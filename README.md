@@ -14,15 +14,16 @@
       }
 ### Import and install
 ### APIs
-      TextField({textFieldParameters:TextFieldOptions})
+      TextField({textFieldType:TextFIeldType,textFieldParameters:TextFieldOptions})
 ### Parameters
+textFieldType:[TextFieldType*](README.md#textfieldtype)
+
 textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
    
 #### TextFieldOptions
 
    |Parameter|type|Remarks|
    |-|-|-|
-   |textFieldType|[TextFieldType*](README.md#textfieldtype)|type of textfield to use: 1)Filled; 2)Outlined|
    |label|string|label of textfield|
    |leadingIcon|Resource|leading icon to be used|
    |trailing icon|Resource|trailing icon to be used|
@@ -56,7 +57,6 @@ textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
    |fontFamily|string|-|
    |enterKeyType|[EnterKeyType](https://developer.harmonyos.com/en/docs/documentation/doc-references/ts-basic-components-textinput-0000001233397495#EN-US_TOPIC_0000001233397495__li1231618102427)|enter key functionality|
    |caretColor|Color|color of cursor when input is being edited|
-   |invert|number|inverts the input image|
    
 #### Atrributes
 The following attributes are supported for TextFieldOptions:
@@ -80,6 +80,9 @@ The following attributes are supported for TextFieldOptions:
    |onSubmit(callBack:(enterKey?:[EnterKeyType](https://developer.harmonyos.com/en/docs/documentation/doc-references/ts-basic-components-textinput-0000001233397495#EN-US_TOPIC_0000001233397495__li1231618102427))=>void|triggered when input of textfield is submitted|
    |onEditChange(callBack:(isEditing:boolean)=>void)|triggered when user stops editing|
    |isValid(callback:(value?:string)=>{})|triggered when user stops editing, should return an object of type: { valid:boolean,errorMessage:string}|
+   |onCopy(callBack:(value?:string)=>{})|-|
+   |onCut(callBack:(value?:string)=>{})|-|
+   |onPaste(callBack:(value?:string)=>{})|-|
 ### Usage
 
       import { TextField, TextFieldType, TextFieldOptions, TextInputOptions } from "@ohos/TextField"
