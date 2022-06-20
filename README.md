@@ -12,7 +12,7 @@
             ...
             "@ohos/TextField": "file:../TextField"
       }
-### Import and install
+### Import and install 
 ### APIs
       TextField({textFieldType:TextFIeldType,textFieldParameters:TextFieldOptions})
 ### Parameters
@@ -80,16 +80,13 @@ The following attributes are supported for TextFieldOptions:
    |onSubmit(callBack:(enterKey?:[EnterKeyType](https://developer.harmonyos.com/en/docs/documentation/doc-references/ts-basic-components-textinput-0000001233397495#EN-US_TOPIC_0000001233397495__li1231618102427))=>void|triggered when input of textfield is submitted|
    |onEditChange(callBack:(isEditing:boolean)=>void)|triggered when user stops editing|
    |isValid(callback:(value?:string)=>{})|triggered when user stops editing, should return an object of type: { valid:boolean,errorMessage:string}|
-   |onCopy(callBack:(value?:string)=>{})|-|
-   |onCut(callBack:(value?:string)=>{})|-|
-   |onPaste(callBack:(value?:string)=>{})|-|
+
 ### Usage
 
       import { TextField, TextFieldType, TextFieldOptions, TextInputOptions } from "@ohos/TextField"
 
       @Entry
       @Component
-      Component
       struct Filled_sample
       {
         textInputOptions: TextInputOptions =
@@ -99,7 +96,6 @@ The following attributes are supported for TextFieldOptions:
             input:"neerajpatidar@gmail.com",
             id:"mail-id1",
             inputType:InputType.Number,
-            invert:5,
             placeholderColor:Color.Brown,
             placeholderFont:{size:15,style:FontStyle.Normal,family:"Arial",weight:FontWeight.Normal},
             fontWeight:FontWeight.Bold,
@@ -110,9 +106,9 @@ The following attributes are supported for TextFieldOptions:
             caretColor:Color.Red
           };
 
-        textFieldOptions: TextFieldOptions =
-          {
-            textFieldType:TextFieldType.Filled,
+        textFieldOptions: TextFieldOptions = new TextFieldOptions;
+        aboutToAppear():void{
+          this.textFieldOptions = {...this.textFieldOptions,
             label:'User',
             labelWidth: 35,
             helperText: "Shouldn't be a mail-id",
@@ -121,14 +117,22 @@ The following attributes are supported for TextFieldOptions:
             characterCounter:true,
             maxCharacters:10,
             textInputOptions:this.textInputOptions,
-            trailingIconClick:(event)=>{console.log("trail icon click event: "+ JSON.stringify(event))},
-            leadingIconClick:(event)=>{console.log("lead icon click event: "+ JSON.stringify(event))},
+            trailingIconClick:(event)=>{
+              AlertDialog.show({message:'trail icon click\n' + JSON.stringify(event.target)})
+            },
+            leadingIconClick:(event)=>{
+              AlertDialog.show({message:'lead icon click\n' + JSON.stringify(event.target)})
+            },
             onChanged:()=>{},
-            editChanged:(isEditing)=>{console.log("edit change:"+isEditing)},
+            editChanged:(isEditing)=>{
+
+              AlertDialog.show({message :""+isEditing,title:'Edit Change'})
+            },
             validate:()=>{return {valid:true,errorMessage:"error"}},
             submit:()=>{}
           }
-          
+        }
+
       build()
         {
           Flex({direction:FlexDirection.Column,justifyContent:FlexAlign.Center})
@@ -140,5 +144,6 @@ The following attributes are supported for TextFieldOptions:
           }
         }
       }
+
       
 ### License
