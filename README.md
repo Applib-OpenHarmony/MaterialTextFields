@@ -147,3 +147,4 @@ The following attributes are supported for TextFieldOptions:
 
       
 ### License
+Licensed under the [Apache License, Version 2.0](./LICENSE)
