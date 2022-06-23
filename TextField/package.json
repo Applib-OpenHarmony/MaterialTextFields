@@ -1,0 +1,13 @@
+{
+  "name": "@ohos/TextField",
+  "description": "TextField Library that lets you create amazing textfields",
+  "ohos": {
+    "org": ""
+  },
+  "version": "1.0.0",
+  "main": "TextField.ets",
+  "types": "",
+  "repository": {},
+  "license": "ISC",
+  "dependencies": {}
+}
