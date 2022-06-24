@@ -4,7 +4,15 @@
       2. Assistive elements like Helper Text and Character Counter
       3. Leading and Trailing Icons to help user to understand the type of input expected
       4. Error Message assistance to check and verify the type of input required
+### Exemplary Images
+Defocused Textfields:
 
+![Alt text](./images/outlined-defocused.png "Outlined" )   ![Alt text](./images/filled-labeled-defocused.png "Filled" )
+
+Focused TextFields:
+
+![Alt text](./images/filled-labeled-focused.png "Filled Labeled" )   ![Alt text](./images/filled-nonlabeled-focused.png "Filled Non-labeled" )  
+![Alt text](./images/outlined-focused-labeled.png "Outlined Labeled" )   ![Alt text](./images/outlined-focused-nonlabeled.png "Outlined Non-labeled" )
 ### Dependencies
       Add following to the dependencies in package.json file of your project: "@ohos/TextField": "file:../TextField"
             
@@ -83,68 +91,49 @@ The following attributes are supported for TextFieldOptions:
 
 ### Usage
 
-      import { TextField, TextFieldType, TextFieldOptions, TextInputOptions } from "@ohos/TextField"
+      import { TextField, TextFieldType, TextFieldOptions } from "@ohos/TextField"
 
       @Entry
       @Component
-      struct Filled_sample
-      {
-        textInputOptions: TextInputOptions =
-          {
-            placeholderText:'@gmail.com',
-            enterKeyType:EnterKeyType.Search,
-            input:"neerajpatidar@gmail.com",
-            id:"mail-id1",
-            inputType:InputType.Number,
-            placeholderColor:Color.Brown,
-            placeholderFont:{size:15,style:FontStyle.Normal,family:"Arial",weight:FontWeight.Normal},
-            fontWeight:FontWeight.Bold,
-            fontStyle:FontStyle.Normal,
-            fontSize:15,
-            fontFamily:"Sans-serif",
-            fontColor:Color.Green,
-            caretColor:Color.Red
-          };
+      struct Outlined_sample {
+        textFieldOptions: TextFieldOptions = new TextFieldOptions()
+          .setIcons($r('app.media.account'))
+          .onTrailingIconClick((event) => {
+            console.log("Trailing icon click:" + JSON.stringify(event))
+          })
+          .onLeadingIconClick((event) => {
+            console.log("Leading icon click:" + event)
+          })
+          .setCharacterCounter(true, 10)
+          .isValid((value) => {
+            if (value.charAt(4) == 'd') {
+              return { valid: true, errorMessage: '' }
+            }
+            else return { valid: false, errorMessage: 'd should be at 5th position' }
+          })
+          .setHelperText('Required*')
+          .setTextInputOptions({
+            placeholderText: 'mail or phone',
+            input: 'Harold',
+            caretColor: Color.Blue,
+            fontFamily: 'cursive'
+          })
 
-        textFieldOptions: TextFieldOptions = new TextFieldOptions;
-        aboutToAppear():void{
-          this.textFieldOptions = {...this.textFieldOptions,
-            label:'User',
-            labelWidth: 35,
-            helperText: "Shouldn't be a mail-id",
-            trailingIcon: $r("app.media.clear"),
-            leadingIcon: $r('app.media.account'),
-            characterCounter:true,
-            maxCharacters:10,
-            textInputOptions:this.textInputOptions,
-            trailingIconClick:(event)=>{
-              AlertDialog.show({message:'trail icon click\n' + JSON.stringify(event.target)})
-            },
-            leadingIconClick:(event)=>{
-              AlertDialog.show({message:'lead icon click\n' + JSON.stringify(event.target)})
-            },
-            onChanged:()=>{},
-            editChanged:(isEditing)=>{
+        aboutToAppear() {
 
-              AlertDialog.show({message :""+isEditing,title:'Edit Change'})
-            },
-            validate:()=>{return {valid:true,errorMessage:"error"}},
-            submit:()=>{}
-          }
         }
 
-      build()
-        {
-          Flex({direction:FlexDirection.Column,justifyContent:FlexAlign.Center})
-          {
-            TextField(
-              {
-                textFieldParameters:this.textFieldOptions
-              });
+        build() {
+          Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
+            TextField({ textFieldParameters: this.textFieldOptions, textFieldType: TextFieldType.Outlined })
+            TextInput({ placeholder: 'he', text: 'ger' }).width(200).height(100).fontFamily('cursive')
           }
+          .width('100%')
+          .height(300)
+          .backgroundColor(Color.White)
         }
       }
-
       
+![Alt text](./images/defocused-out.png "Defocused Textfield")     ![Alt text](./images/error-example.png "Focused Textfield")     
 ### License
 Licensed under the [Apache License, Version 2.0](./LICENSE)
