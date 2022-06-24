@@ -13,22 +13,25 @@ Focused TextFields:
 
 ![Alt text](./images/filled-labeled-focused.png "Filled Labeled" )   ![Alt text](./images/filled-nonlabeled-focused.png "Filled Non-labeled" )  
 ![Alt text](./images/outlined-focused-labeled.png "Outlined Labeled" )   ![Alt text](./images/outlined-focused-nonlabeled.png "Outlined Non-labeled" )
+
+<img src='./GIFs/filled.gif' width="250" height="300" >   <img src='./GIFs/outlined.gif' width="160" height="300" >
+
 ### Dependencies
-      Add following to the dependencies in package.json file of your project: "@ohos/TextField": "file:../TextField"
+      Add following to the dependencies in package.json file of your project: "@ohos/MaterialTextField": "file:../MaterialTextField"
             
       "dependencies": {
             ...
-            "@ohos/TextField": "file:../TextField"
+            "@ohos/MaterialTextField": "file:../MaterialTextField"
       }
 ### Import and install 
 ### APIs
-      TextField({textFieldType:TextFIeldType,textFieldParameters:TextFieldOptions})
+      MaterialTextField({textFieldType:MaterialTextFieldType,textFieldParameters:MaterialTextFieldOptions})
 ### Parameters
-textFieldType:[TextFieldType*](README.md#textfieldtype)
+textFieldType:[MaterialTextFieldType*](README.md#MaterialTextFieldType)
 
-textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
+textFieldOptions:[MaterialTextFieldOptions](README.md#MaterialTextFieldOptions)
    
-#### TextFieldOptions
+#### MaterialTextFieldOptions
 
    |Parameter|type|Remarks|
    |-|-|-|
@@ -38,14 +41,14 @@ textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
    |characterCounter|boolean|characterCounter enabled when true|
    |maxCharacters|number|max number of characters allowed|
    |helperText|string|used as a hint for input text|
-   |textInputOptions|[TextInputOptions](README.md#textinputoptions)|text input options|
+   |textInputOptions|[Object{}](README.md#textinputoptions)|text input options|
    |margin|Length or Padding|-|
    |padding|Length or Padding|-|
    |border|[BorderOptions](https://developer.harmonyos.com/en/docs/documentation/doc-references/ts-universal-attributes-border-0000001158261223)|-|
    
 > Note: Parameters marked with '*' are mandatory.
    
-#### TextFieldType
+#### MaterialTextFieldType
     1. Filled
     2. Outlined
     
@@ -70,7 +73,7 @@ textFieldOptions:[TextFieldOptions](README.md#TextFieldOptions)
 The following attributes are supported for TextFieldOptions:
 |Attribute|Description|
 |-|-|
-|setTextFIeldType(type:TextFieldType)|sets textfield type|
+|setTextFIeldType(type:MaterialTextFieldType)|sets textfield type|
 |setLabel(label:string,labelWidth:number)|sets the label for textfield|
 |setHelperText(text:string)|setsthe helper text|
 |setCharacterCounter(enable:boolean,maxCharacters:number)|enables character counter and maximum allowed characters|
@@ -91,20 +94,20 @@ The following attributes are supported for TextFieldOptions:
 
 ### Usage
 
-      import { TextField, TextFieldType, TextFieldOptions } from "@ohos/TextField"
+      import { MaterialTextField, MaterialTextFieldOptions, MaterialTextFieldType } from "@ohos/MaterialTextField"
 
       @Entry
       @Component
       struct Outlined_sample {
-        textFieldOptions: TextFieldOptions = new TextFieldOptions()
-          .setIcons($r('app.media.account'))
+        textFieldOptions: MaterialTextFieldOptions = new MaterialTextFieldOptions()
+          .setIcons($r('app.media.account'), $r('app.media.clear'))
           .onTrailingIconClick((event) => {
             console.log("Trailing icon click:" + JSON.stringify(event))
           })
           .onLeadingIconClick((event) => {
             console.log("Leading icon click:" + event)
           })
-          .setCharacterCounter(true, 10)
+          .setCharacterCounter(true,10)
           .isValid((value) => {
             if (value.charAt(4) == 'd') {
               return { valid: true, errorMessage: '' }
@@ -125,11 +128,11 @@ The following attributes are supported for TextFieldOptions:
 
         build() {
           Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-            TextField({ textFieldParameters: this.textFieldOptions, textFieldType: TextFieldType.Outlined })
-            TextInput({ placeholder: 'he', text: 'ger' }).width(200).height(100).fontFamily('cursive')
+            MaterialTextField({ textFieldParameters: this.textFieldOptions, textFieldType: MaterialTextFieldType.Outlined })
+            TextInput({ placeholder: 'he', text: 'ger' }).width('200vp').height('100vp').fontFamily('cursive')
           }
           .width('100%')
-          .height(300)
+          .height('300vp')
           .backgroundColor(Color.White)
         }
       }
