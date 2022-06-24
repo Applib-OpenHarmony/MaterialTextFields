@@ -9,14 +9,14 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.TextField",
+    "package": "com.example.MaterialTextField",
     "deviceType": [
       "phone",
       "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,
-      "moduleName": "TextField",
+      "moduleName": "MaterialTextField",
       "moduleType": "har"
     },
     "uiSyntax": "ets"

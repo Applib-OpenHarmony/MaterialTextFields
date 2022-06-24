@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Application Library Engineering Group
+ * Copyright (C) 2022 Application Library Engineering Group
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,16 +24,14 @@ export default struct Outlined {
 
   //label parameters
   @State private labelWidth: number= 0;
-  @State private labelHeight: number= 0;
+  @State private labelHeight: string= '0vp';
   @State private labelColor: Color = Color.Black;
   //leadingIcon
-  private leadingIconSize: number = 0;
-  private leadingIconMargin: number = 0;
+  private leadingIconSize: string = '0vp';
   //placeholder default text
   @State private placeholder: string = "";
   //trailingIcon
-  private trailingIconSize: number = 0;
-  private trailingIconMargin: number = 0;
+  private trailingIconSize: string = '0vp';
   //activation indicator
   @State private activationIndicatorColor: Color = Color.Black
   @State private activationIndicatorWidth: number = 1;
@@ -56,17 +54,15 @@ export default struct Outlined {
       this.placeholder = this.textFieldParameters.textInputOptions.placeholderText
     }
     if (this.textFieldParameters.leadingIcon) {
-      this.leadingIconMargin = 16
-      this.leadingIconSize = 24;
+      this.leadingIconSize = '24vp';
     }
     if (this.textFieldParameters.trailingIcon) {
-      this.trailingIconMargin = 12;
-      this.trailingIconSize = 24;
+      this.trailingIconSize = '24vp';
     }
     if (this.textFieldParameters.textInputOptions.input) {
       this.input = this.textFieldParameters.textInputOptions.input;
       if (this.input.length != 0) {
-        this.labelHeight = 10;
+        this.labelHeight = '10vp';
         this.labelWidth = this.textFieldParameters.labelWidth;
       }
     }
@@ -120,7 +116,7 @@ export default struct Outlined {
     errorMessage: string
   }): void {
     if (this.focused) {
-      this.labelHeight = 10;
+      this.labelHeight = '10vp';
       this.labelWidth = this.textFieldParameters.labelWidth;
       this.placeholder = this.textFieldParameters.textInputOptions.placeholderText
       this.activationIndicatorColor = 0x0005FF;
@@ -132,12 +128,12 @@ export default struct Outlined {
       this.activationIndicatorWidth = 1;
       this.labelColor = Color.Black;
       if (this.input.length == 0) {
-        this.labelHeight = 0;
+        this.labelHeight = '0vp';
         this.labelWidth = 0;
         this.placeholder = this.textFieldParameters.label
       }
       else {
-        this.labelHeight = 10;
+        this.labelHeight = '10vp';
         this.labelWidth = this.textFieldParameters.labelWidth;
       }
     }
@@ -155,28 +151,60 @@ export default struct Outlined {
     this.entry = false;
   }
 
+  /**
+   * returns height of input box in string form
+   */
+  private getLabeledInputHeight(): string {
+    if (this.labelHeight = '10vp') {
+      return '30vp'
+    }
+    else return '40vp'
+  }
+
+  /**
+   * returns the width of input box depending on
+   * presence/absence of leading/trailing icon
+   */
+  private getInputWidth(): string {
+    if (this.trailingIconSize == '24vp') {
+      if (this.leadingIconSize == '24vp') {
+        return '204vp'
+      }
+      else {
+        return '228vp'
+      }
+    }
+    else {
+      if (this.leadingIconSize == '24vp') {
+        return '228vp'
+      }
+      else {
+        return '252vp'
+      }
+    }
+  }
+
   build() {
-    Column({ space: 0 }) {
+    Column({ space: 1 }) {
       Stack() {
         /**
          * label text, inputbox, leading icon and trailing icon stacked on rectangular background with rounded corners
          */
         Rect()
-          .width(280)
-          .height(48)
-          .radius(5)
+          .width('280vp')
+          .height('48vp')
+          .radius('5vp')
           .fill(Color.White)
           .stroke(this.activationIndicatorColor)
           .strokeWidth(this.activationIndicatorWidth)
-          .margin({ top: 6 });
+          .margin({ top: '6vp' });
 
         //stacked design
-        Row({ space: 0 }) {
+        Row({ space: '0vp' }) {
           // leading icon
           Image(this.textFieldParameters.leadingIcon)
             .width(this.leadingIconSize)
             .height(this.leadingIconSize)
-            .margin({ left: this.leadingIconMargin })
             .align(Alignment.Center)
             .onClick((event) => {
               this.textFieldParameters.leadingIconClick(event);
@@ -184,23 +212,23 @@ export default struct Outlined {
 
           if (this.textFieldParameters.label) {
             //label and input box
-            Column({ space: 0 }) {
+            Column({ space: '0vp' }) {
               //label text
               Text(this.textFieldParameters.label)
-                .width(this.labelWidth)
+                .width(this.labelWidth.toString() + 'vp')
                 .height(this.labelHeight)
-                .margin({ top: -6, left: 16 - this.leadingIconMargin - this.leadingIconSize })
+                .margin({ top: '-6vp', left: '-' + this.leadingIconSize })
                 .alignSelf(ItemAlign.Start)
                 .backgroundColor(Color.White)
-                .fontSize(11)
+                .fontSize('11vp')
                 .fontColor(this.labelColor)
                 .textAlign(TextAlign.Center)
-                .borderRadius(10);
+                .borderRadius('10vp');
 
               //input box
               TextInput({ placeholder: this.placeholder, text: this.input })
-                .width(280 - this.trailingIconMargin - this.trailingIconSize - this.leadingIconMargin - this.leadingIconSize)
-                .height(40 - this.labelHeight)
+                .width(this.getInputWidth())
+                .height(this.getLabeledInputHeight())
                 .placeholderColor(this.textFieldParameters.textInputOptions.placeholderColor)
                 .placeholderFont(this.textFieldParameters.textInputOptions.placeholderFont)
                 .fontColor(this.textFieldParameters.textInputOptions.fontColor)
@@ -243,13 +271,12 @@ export default struct Outlined {
             }
           }
 
-          else //input box for non-labeled textfield
-          {
-            //input box
+          else {
+            //input box for non-labeled textfield
             TextInput({ placeholder: this.placeholder, text: this.input })
-              .width(280 - this.trailingIconMargin - this.trailingIconSize - this.leadingIconMargin - this.leadingIconSize)
-              .height(40)
-              .margin({ top: 4, bottom: 4 })
+              .width(this.getInputWidth())
+              .height('40vp')
+              .margin({ top: '4vp', bottom: '4vp' })
               .fontColor(this.textFieldParameters.textInputOptions.fontColor)
               .fontSize(this.textFieldParameters.textInputOptions.fontSize)
               .fontWeight(this.textFieldParameters.textInputOptions.fontWeight)
@@ -295,37 +322,36 @@ export default struct Outlined {
           Image(this.textFieldParameters.trailingIcon)
             .width(this.trailingIconSize)
             .height(this.trailingIconSize)
-            .margin({ right: this.trailingIconMargin })
             .align(Alignment.Center)
             .onClick(
               (event) => {
                 this.textFieldParameters.trailingIconClick(event);
               });
         }
-        .width(280)
-        .height(48)
+        .width('252vp')
+        .height('48vp')
+        .margin({ left: '16vp', right: '12vp' })
       }
-      .width(280)
-      .height(56)
-      .backgroundColor(Color.White)
+      .width('280vp')
+      .height('56vp')
 
       //helper text with character counter
       if (this.textFieldParameters.characterCounter) {
         Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
-          Text(this.helperText).height(16).fontSize(12).margin({ left: 16 }).fontColor(this.helperTextColor)
-          Text(this.numberOfCharacters + '').height(16).fontSize(12).margin({ right: 16 })
+          Text(this.helperText).height('16vp').fontSize('12vp').margin({ left: '16vp' }).fontColor(this.helperTextColor)
+          Text(this.numberOfCharacters + '').height('16vp').fontSize('12vp').margin({ right: '16vp' })
         }
-        .width(280)
-        .height(16)
+        .width('280vp')
+        .height('15vp')
       }
 
       // helper text without character counter
       else {
         Text(this.helperText)
-          .width(280)
-          .height(16)
-          .fontSize(12)
-          .margin({ left: 16 })
+          .width('280vp')
+          .height('16vp')
+          .fontSize('12vp')
+          .margin({ left: '16vp' })
           .fontColor(this.helperTextColor)
       }
     }

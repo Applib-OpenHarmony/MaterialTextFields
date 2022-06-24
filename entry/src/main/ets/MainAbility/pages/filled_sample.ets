@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Application Library Engineering Group
+ * Copyright (C) 2022 Application Library Engineering Group
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,53 +14,46 @@
  * limitations under the License.
  */
 
-import { TextField, TextFieldType, TextFieldOptions } from "@ohos/TextField"
+import { MaterialTextField, MaterialTextFieldOptions, MaterialTextFieldType } from "@ohos/MaterialTextField"
 
 @Entry
 @Component
 struct Filled_sample {
-  textFieldOptions: TextFieldOptions = new TextFieldOptions;
+  textFieldOptions: MaterialTextFieldOptions = new MaterialTextFieldOptions;
 
   aboutToAppear(): void {
     this.textFieldOptions = {
       ...this.textFieldOptions,
       label: 'User',
-//      labelWidth: 35,
       helperText: "Shouldn't be a mail-id",
       trailingIcon: $r("app.media.clear"),
       leadingIcon: $r('app.media.account'),
       characterCounter: true,
       maxCharacters: 10,
-      textInputOptions:{placeholderText:"eg: Harold",
-        placeholderFont:{size:20,style:FontStyle.Normal,weight:FontWeight.Normal},
-        placeholderColor:Color.Red,
-        caretColor:Color.Red,
-         },
+      textInputOptions: { placeholderText: "eg: Harold",
+        placeholderFont: { size: 20, style: FontStyle.Normal, weight: FontWeight.Normal },
+        caretColor: Color.Red,
+      },
       trailingIconClick: (event) => {
-        AlertDialog.show({ message: 'trail icon click\n' + JSON.stringify(event.target) })
+        console.log('trail icon click\n' + JSON.stringify(event.target));
       },
       leadingIconClick: (event) => {
-        AlertDialog.show({ message: 'lead icon click\n' + JSON.stringify(event.target) })
+        console.log('lead icon click\n' + JSON.stringify(event.target))
       },
-//      onChanged: () => {
-//      },
-//      editChanged: (isEditing) => {
-//
-//        AlertDialog.show({ message: "" + isEditing, title: 'Edit Change' })
-//      },
-//      validate: () => {
-//        return { valid: true, errorMessage: "error" }
-//      },
-//      submit: () => {
-//      }
+      editChanged: (isEditing) => {
+        console.log("Edit Change" + isEditing)
+      },
+      validate: () => {
+        return { valid: true, errorMessage: "error" }
+      }
     }
   }
 
   build() {
-    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center }) {
-      TextField({ textFieldParameters: this.textFieldOptions,textFieldType:TextFieldType.Filled });
-      TextInput({placeholder:'he',text:'ger'}).width(200).height(100)
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
+      MaterialTextField({ textFieldParameters: this.textFieldOptions, textFieldType: MaterialTextFieldType.Filled });
+      TextInput({ placeholder: 'he', text: 'ger' }).width('200vp').height('100vp')
 
-    }
+    }.width('100%')
   }
 }

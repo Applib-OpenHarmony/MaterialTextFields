@@ -24,8 +24,8 @@
       ]
     },
     {
-      "name": "TextField",
-      "srcPath": "./TextField"
+      "name": "MaterialTextField",
+      "srcPath": "./MaterialTextField"
     }
   ]
 }

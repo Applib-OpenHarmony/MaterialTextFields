@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Application Library Engineering Group
+ * Copyright (C) 2022 Application Library Engineering Group
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,18 +23,16 @@ export default struct Filled {
   @State textFieldParameters: any= {};
 
   //label parameters
-  @State private labelHeight: number = 0
+  @State private labelHeight: number | string = '0vp'
   @State private labelColor: Color = Color.Black
   //leading Icon
-  private leadingIconSize: number = 0;
-  private leadingIconMargin: number = 0;
+  private leadingIconSize: string = '0vp';
   //placeholder default text
   @State private placeholder: string = '';
   //trailingIcon
-  private trailingIconSize: number = 0;
-  private trailingIconMargin: number = 0;
+  private trailingIconSize: string = '0vp';
   //activation indicator
-  @State private activationIndicatorWidth: number = 1;
+  @State private activationIndicatorWidth: string = '1vp';
   @State private activationIndicatorColor: Color = Color.Black;
   //helper text
   @State private helperTextColor: Color= Color.Black;
@@ -54,17 +52,15 @@ export default struct Filled {
       this.placeholder = this.textFieldParameters.textInputOptions.placeholderText
     }
     if (this.textFieldParameters.leadingIcon) {
-      this.leadingIconMargin = 16
-      this.leadingIconSize = 24;
+      this.leadingIconSize = '24vp';
     }
     if (this.textFieldParameters.trailingIcon) {
-      this.trailingIconMargin = 12;
-      this.trailingIconSize = 24;
+      this.trailingIconSize = '24vp';
     }
     if (this.textFieldParameters.textInputOptions.input) {
       this.input = this.textFieldParameters.textInputOptions.input;
       if (this.input.length != 0) {
-        this.labelHeight = 15;
+        this.labelHeight = '14vp';
       }
     }
     this.numberOfCharacters = this.input.length;
@@ -99,11 +95,11 @@ export default struct Filled {
       },
       () => {
         if (this.focused) {
-          this.activationIndicatorWidth = 2;
+          this.activationIndicatorWidth = '2vp';
           this.activationIndicatorColor = 0x0005FF;
         }
         else {
-          this.activationIndicatorWidth = 1;
+          this.activationIndicatorWidth = '1vp';
           this.activationIndicatorColor = Color.Black;
         }
         if (!this.entry) {
@@ -140,22 +136,22 @@ export default struct Filled {
       },
       () => {
         if (this.focused) {
-          this.activationIndicatorWidth = 2;
+          this.activationIndicatorWidth = '2vp';
           this.activationIndicatorColor = 0x0005FF;
           this.labelColor = 0x0005FF
           this.placeholder = this.textFieldParameters.textInputOptions.placeholderText
-          this.labelHeight = 15;
+          this.labelHeight = '15vp';
         }
         else {
           if (this.input.length == 0) {
             this.placeholder = this.textFieldParameters.label
-            this.labelHeight = 0;
+            this.labelHeight = '0vp';
           }
           else {
             this.placeholder = this.textFieldParameters.textInputOptions.placeholderText;
-            this.labelHeight = 15;
+            this.labelHeight = '15vp';
           }
-          this.activationIndicatorWidth = 1;
+          this.activationIndicatorWidth = '1vp';
           this.activationIndicatorColor = Color.Black;
           this.labelColor = Color.Black
         }
@@ -171,8 +167,45 @@ export default struct Filled {
           }
         }
         this.entry = false;
+        console.log(this.focused + ':' + this.activationIndicatorWidth)
       }
     )
+  }
+
+  /**
+   * returns the width of input box depending on
+   * presence/absence of leading/trailing icon
+   */
+  private getInputWidth(): string {
+    if (this.trailingIconSize == '24vp') {
+      if (this.leadingIconSize == '24vp') {
+        return '204vp'
+      }
+      else {
+        return '228vp'
+      }
+    }
+    else {
+      if (this.leadingIconSize == '24vp') {
+        return '228vp'
+      }
+      else {
+        return '252vp'
+      }
+    }
+  }
+
+  /**
+   * returns text input row bottom margin
+   * depending on the width of activation indicator
+   */
+  private margin(): string {
+    if (this.activationIndicatorWidth == '1vp') {
+      return '1vp'
+    }
+    else {
+      return '2vp'
+    }
   }
 
   build() {
@@ -182,20 +215,20 @@ export default struct Filled {
        */
       Stack() {
         Path()
-          .width(280)
-          .height(64)
+          .width('280vp')
+          .height('64vp')
           .commands('M0 15 C0 15 2 2 15 0 L825 0 C825 0 835 5 840 15 L840 144 0 144 Z')
-          .fill(Color.White)
+          .fill(0xeeeeee)
           .align(Alignment.TopStart)
-        Column({ space: 0 }) {
-          Row({ space: 0 }) {
+        Column({ space: '0vp' }) {
+          Row({ space: '0vp' }) {
             if (this.textFieldParameters.label) {
               //labeled design
               //labeled leading icon
               Image(this.textFieldParameters.leadingIcon)
                 .width(this.leadingIconSize)
                 .height(this.leadingIconSize)
-                .margin({ left: this.leadingIconMargin, bottom: 12 - this.activationIndicatorWidth, top: 12 })
+                .margin({ bottom: '10vp', top: '12vp' })
                 .onClick(
                   (event) => {
                     this.textFieldParameters.leadingIconClick(event)
@@ -207,13 +240,12 @@ export default struct Filled {
                   .width('100%')
                   .height(this.labelHeight)
                   .fontColor(this.labelColor)
-                  .fontSize(12)
-                  .margin({ left: 16 })
-                  .padding({ bottom: 1 })
-                  .backgroundColor(Color.White)
+                  .fontSize('12vp')
+                  .margin({ left: '16vp' })
+                  .padding({ bottom: '1vp' })
                 TextInput({ placeholder: this.placeholder, text: this.input })
                   .width('100%')
-                  .height(20)
+                  .height('20vp')
                   .fontColor(this.textFieldParameters.textInputOptions.fontColor)
                   .fontSize(this.textFieldParameters.textInputOptions.fontSize)
                   .fontWeight(this.textFieldParameters.textInputOptions.fontWeight)
@@ -258,15 +290,16 @@ export default struct Filled {
                       this.textFieldParameters.submit(enterKey)
                     })
               }
-              .width(280 - this.trailingIconSize - this.leadingIconSize - this.leadingIconMargin - this.trailingIconMargin)
-              .height(36)
-              .margin({ top: 4, bottom: 8 - this.activationIndicatorWidth })
+              .width(this.getInputWidth())
+              .height('36vp')
+              .padding({ bottom: '1vp' })
+              .margin({ top: '4vp', bottom: '6vp' })
 
               //labeled trailing icon
               Image(this.textFieldParameters.trailingIcon)
                 .width(this.trailingIconSize)
                 .height(this.trailingIconSize)
-                .margin({ right: this.trailingIconMargin, top: 12, bottom: 12 - this.activationIndicatorWidth })
+                .margin({ top: '12vp', bottom: '10vp' })
                 .onClick(
                   (event) => {
                     this.textFieldParameters.trailingIconClick(event)
@@ -278,16 +311,16 @@ export default struct Filled {
               Image(this.textFieldParameters.leadingIcon)
                 .width(this.leadingIconSize)
                 .height(this.leadingIconSize)
-                .margin({ left: this.leadingIconMargin, bottom: 12 - this.activationIndicatorWidth, top: 12 })
+                .margin({ bottom: '10vp', top: '12vp' })
                 .onClick((event) => {
                   this.textFieldParameters.leadingIconClick(event)
                 });
 
               //input area
               TextInput({ placeholder: this.placeholder, text: this.input })
-                .height(32)
-                .margin({ left: -4, bottom: 8 - this.activationIndicatorWidth, top: 8 })
-                .width(280 - this.trailingIconSize - this.leadingIconSize - this.leadingIconMargin - this.trailingIconMargin)
+                .height('32vp')
+                .margin({ left: '-4vp', bottom: '6vp', top: '8vp' })
+                .width(this.getInputWidth())
                 .maxLength(this.textFieldParameters.maxCharacters)
                 .fontColor(this.textFieldParameters.textInputOptions.fontColor)
                 .fontSize(this.textFieldParameters.textInputOptions.fontSize)
@@ -333,43 +366,52 @@ export default struct Filled {
               Image(this.textFieldParameters.trailingIcon)
                 .width(this.trailingIconSize)
                 .height(this.trailingIconSize)
-                .margin({ right: this.trailingIconMargin, bottom: 12 - this.activationIndicatorWidth, top: 12 })
+                .margin({ bottom: '10vp', top: '12vp' })
                 .onClick((event) => {
                   this.textFieldParameters.trailingIconClick(event)
                 });
             }
           }
-          .height(48 - this.activationIndicatorWidth)
-          .backgroundColor(Color.White)
+          .height('46vp')
+          .margin({ left: '16vp', right: '12vp', bottom: this.margin() })
 
           //activation indicator
-          Rect().height(this.activationIndicatorWidth).width(280).fill(this.activationIndicatorColor)
+          Rect().height(this.activationIndicatorWidth).width('280vp').fill(this.activationIndicatorColor)
 
           //helper text with character counter
           if (this.textFieldParameters.characterCounter) {
-            if (this.textFieldParameters.characterCounter) {
-              Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
-                Text(this.helperText).height(16).fontSize(12).margin({ left: 16 }).fontColor(this.helperTextColor)
-                Text(this.numberOfCharacters + '').height(16).fontSize(12).margin({ right: 16 })
-              }
-              .width(280)
-              .height(16)
+            Flex({
+              direction: FlexDirection.Row,
+              justifyContent: FlexAlign.SpaceBetween,
+              alignItems: ItemAlign.Center
+            }) {
+              Text(this.helperText)
+                .height('14vp')
+                .fontSize('12vp')
+                .margin({ left: '16vp' })
+                .fontColor(this.helperTextColor)
+              Text(this.numberOfCharacters + '')
+                .height('14vp')
+                .fontSize('12vp')
+                .margin({ right: '16vp' })
+                .fontColor(this.helperTextColor)
             }
+            .width('280vp')
+            .height('14vp').padding({ top: '1vp' })
           }
           //helper text without character counter
           else {
             Text(this.helperText)
-              .width(280)
-              .height(16)
-              .fontSize(12)
-              .margin({ left: 16 })
+              .width('280vp')
+              .height('16vp')
+              .fontSize('12vp')
+              .margin({ left: '16vp' })
               .fontColor(this.helperTextColor)
           }
         }
       }
     }
-    .width(280)
-    .height(64)
-    .backgroundColor(Color.White)
+    .width('280vp')
+    .height('64vp')
   }
 }

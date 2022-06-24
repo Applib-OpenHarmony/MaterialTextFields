@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Application Library Engineering Group
+ * Copyright (C) 2022 Application Library Engineering Group
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,16 @@
  * limitations under the License.
  */
 
-
-//types of textfield
-export enum TextFieldType {
+//enum types of textfield
+export enum MaterialTextFieldType {
   Filled,
   Outlined
 }
 
 //textfield attributes
-export class TextFieldOptions {
+export class MaterialTextFieldOptions {
   label?: string;
-  labelWidth?: number=40;
+  labelWidth?: number = 40;
   leadingIcon?: Resource;
   trailingIcon?: Resource;
   characterCounter?: boolean;
@@ -37,12 +36,18 @@ export class TextFieldOptions {
   margin?: Length | Padding;
   padding?: Length | Padding;
   border?: BorderOptions;
-  validate: Function = (value?: string): { valid: boolean, errorMessage: string } => {
+  validate: Function = (value?: string): {
+    valid: boolean,
+    errorMessage: string
+  } => {
     return { valid: true, errorMessage: '' };
   };
-  onChanged: Function = (value?: string): void => { };
-  editChanged: Function = (isEditing?: boolean): void => { };
-  submit: Function = (enterKey?: EnterKeyType): void => { };
+  onChanged: Function = (value?: string): void => {
+  };
+  editChanged: Function = (isEditing?: boolean): void => {
+  };
+  submit: Function = (enterKey?: EnterKeyType): void => {
+  };
   textInputOptions?: {
     id?: string;
     input?: string;
@@ -51,7 +56,7 @@ export class TextFieldOptions {
     placeholderFont?: Font;
     placeholderColor?: Color;
     fontColor?: Color;
-    fontSize?: Length;
+    fontSize?: number;
     fontStyle?: FontStyle;
     fontWeight?: FontWeight;
     fontFamily?: ResourceStr;
@@ -64,7 +69,7 @@ export class TextFieldOptions {
    * @param label
    * @param labelWidth
    */
-  setLabel?(label: string, labelWidth: number=40): TextFieldOptions {
+  setLabel?(label: string, labelWidth: number = 40): MaterialTextFieldOptions {
     this.label = label;
     this.labelWidth = labelWidth
     return this;
@@ -75,7 +80,7 @@ export class TextFieldOptions {
    * @param leadingIcon
    * @param trailingIcon
    */
-  setIcons?(leadingIcon?: Resource, trailingIcon?: Resource): TextFieldOptions {
+  setIcons?(leadingIcon?: Resource, trailingIcon?: Resource): MaterialTextFieldOptions {
     if (leadingIcon) {
       this.leadingIcon = leadingIcon;
     }
@@ -89,7 +94,7 @@ export class TextFieldOptions {
    * sets helpertext
    * @param text
    */
-  setHelperText?(text: string): TextFieldOptions {
+  setHelperText?(text: string): MaterialTextFieldOptions {
     this.helperText = text;
     return this;
   }
@@ -99,7 +104,7 @@ export class TextFieldOptions {
    * @param enable
    * @param maxCharacters
    */
-  setCharacterCounter?(enable: boolean=false, maxCharacters: number=100000): TextFieldOptions {
+  setCharacterCounter?(enable: boolean=false, maxCharacters: number=100000): MaterialTextFieldOptions {
     this.maxCharacters = maxCharacters;
     this.characterCounter = enable;
     return this;
@@ -118,13 +123,13 @@ export class TextFieldOptions {
     placeholderFont?: Font;
     placeholderColor?: Color;
     fontColor?: Color;
-    fontSize?: Length;
+    fontSize?: number;
     fontStyle?: FontStyle;
     fontWeight?: FontWeight;
     fontFamily?: ResourceStr;
     enterKeyType?: EnterKeyType;
     caretColor?: Color;
-  }): TextFieldOptions {
+  }): MaterialTextFieldOptions {
     this.textInputOptions = params;
     return this;
   }
@@ -133,7 +138,7 @@ export class TextFieldOptions {
    * callback triggered when there is a click on leading icon
    * @param callBack
    */
-  onLeadingIconClick?(callBack: Function): TextFieldOptions {
+  onLeadingIconClick?(callBack: Function): MaterialTextFieldOptions {
     this.leadingIconClick = callBack;
     return this;
   }
@@ -142,7 +147,7 @@ export class TextFieldOptions {
    * callback triggered when there is a click on leading icon
    * @param callBack
    */
-  onTrailingIconClick?(callBack: Function): TextFieldOptions {
+  onTrailingIconClick?(callBack: Function): MaterialTextFieldOptions {
     this.trailingIconClick = callBack;
     return this;
   }
@@ -151,7 +156,7 @@ export class TextFieldOptions {
    * sets margin of textfield material component
    * @param value
    */
-  setMargin?(value: Length | Padding): TextFieldOptions {
+  setMargin?(value: Length | Padding): MaterialTextFieldOptions {
     this.margin = value;
     return this;
   }
@@ -160,7 +165,7 @@ export class TextFieldOptions {
    * sets padding of textfield material component
    * @param value
    */
-  setPadding?(value: Length | Padding): TextFieldOptions {
+  setPadding?(value: Length | Padding): MaterialTextFieldOptions {
     this.padding = value;
     return this;
   }
@@ -169,7 +174,7 @@ export class TextFieldOptions {
    * sets border of textfield material component
    * @param value
    */
-  setBorder?(value: BorderOptions): TextFieldOptions {
+  setBorder?(value: BorderOptions): MaterialTextFieldOptions {
     this.border = value;
     return this;
   }
@@ -178,7 +183,7 @@ export class TextFieldOptions {
    * validating function to check validity of input text
    * @param callBack
    */
-  isValid?(callBack: Function): TextFieldOptions {
+  isValid?(callBack: Function): MaterialTextFieldOptions {
     this.validate = callBack;
     return this;
   }
@@ -187,7 +192,7 @@ export class TextFieldOptions {
    * triggered when input changes
    * @param callBack
    */
-  onChange?(callBack: Function): TextFieldOptions {
+  onChange?(callBack: Function): MaterialTextFieldOptions {
     this.onChanged = callBack;
     return this
   }
@@ -196,7 +201,7 @@ export class TextFieldOptions {
    * triggered when user stops editing
    * @param callBack
    */
-  onEditChange?(callBack: Function): TextFieldOptions {
+  onEditChange?(callBack: Function): MaterialTextFieldOptions {
     this.editChanged = callBack;
     return this
   }
@@ -205,7 +210,7 @@ export class TextFieldOptions {
    * triggered when user submits the input
    * @param callBack
    */
-  onSubmit?(callBack: Function): TextFieldOptions {
+  onSubmit?(callBack: Function): MaterialTextFieldOptions {
     this.submit = callBack;
     return this
   }

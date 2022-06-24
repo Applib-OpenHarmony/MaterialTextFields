@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Application Library Engineering Group
+ * Copyright (C) 2022 Application Library Engineering Group
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,5 +14,5 @@
  * limitations under the License.
  */
 
-export { default as TextField } from './src/main/ets/components/TextField/TextField'
-export {  TextFieldType, TextFieldOptions } from './src/main/ets/components/TextField/types'
+export { default as MaterialTextField } from './src/main/ets/components/MaterialTextField/MaterialTextField'
+export {  MaterialTextFieldType, MaterialTextFieldOptions } from './src/main/ets/components/MaterialTextField/types'

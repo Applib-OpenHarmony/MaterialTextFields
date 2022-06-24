@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Application Library Engineering Group
+ * Copyright (C) 2022 Application Library Engineering Group
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,41 +14,45 @@
  * limitations under the License.
  */
 
-
-import { TextField, TextFieldType, TextFieldOptions } from "@ohos/TextField"
+import { MaterialTextField, MaterialTextFieldOptions, MaterialTextFieldType } from "@ohos/MaterialTextField"
 
 @Entry
 @Component
-struct Outlined_sample
-{
-  textFieldOptions: TextFieldOptions = new TextFieldOptions()
-    .setLabel('Username',60)
-    .setIcons($r('app.media.account'))
-    .onTrailingIconClick((event)=>{console.log("Trailing icon click:"+JSON.stringify(event))})
-    .onLeadingIconClick((event)=>{console.log("Leading icon click:"+event)})
-    .setCharacterCounter(true,10)
-//    .isValid((value)=>{
-//      if(value.charAt(5)=='d'){
-//        return {valid:true,errorMessage:''}
-//      }
-//      else return {valid:false,errorMessage:'d should be at 5th index'}
-//    })
+struct Outlined_sample {
+  textFieldOptions: MaterialTextFieldOptions = new MaterialTextFieldOptions()
+    .setLabel('Username', 60)
+    .setIcons($r('app.media.account'), $r('app.media.clear'))
+    .onTrailingIconClick((event) => {
+      console.log("Trailing icon click:" + JSON.stringify(event))
+    })
+    .onLeadingIconClick((event) => {
+      console.log("Leading icon click:" + event)
+    })
+    .isValid((value) => {
+      if (value.charAt(4) == 'd') {
+        return { valid: true, errorMessage: '' }
+      }
+      else return { valid: false, errorMessage: 'd should be at 5th position' }
+    })
     .setHelperText('Required*')
-    .setTextInputOptions({placeholderText:'mail or phone',caretColor:Color.Blue,input:'Hello! there',fontFamily:'cursive'})
-  aboutToAppear()
-  {
+    .setTextInputOptions({
+      placeholderText: 'mail or phone',
+      // input: 'Harold',
+      caretColor: Color.Blue,
+      fontFamily: 'cursive'
+    })
+
+  aboutToAppear() {
 
   }
 
-
   build() {
-    Flex({direction:FlexDirection.Column,justifyContent:FlexAlign.SpaceBetween,alignItems:ItemAlign.Center})
-    {
-      TextField({textFieldParameters:this.textFieldOptions,textFieldType:TextFieldType.Outlined})
-      TextInput({placeholder:'he',text:'ger'}).width(200).height(100).fontFamily('cursive')
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
+      MaterialTextField({ textFieldParameters: this.textFieldOptions, textFieldType: MaterialTextFieldType.Outlined })
+      TextInput({ placeholder: 'he', text: 'ger' }).width('200vp').height('100vp').fontFamily('cursive')
     }
-    .width(300)
-    .height(300)
+    .width('100%')
+    .height('300vp')
     .backgroundColor(Color.White)
   }
 }

@@ -1,11 +1,11 @@
 {
-  "name": "@ohos/TextField",
+  "name": "MaterialTextField",
   "description": "TextField Library that lets you create amazing textfields",
   "ohos": {
     "org": ""
   },
   "version": "1.0.0",
-  "main": "TextField.ets",
+  "main": "MaterialTextField.ets",
   "types": "",
   "repository": {},
   "license": "ISC",
