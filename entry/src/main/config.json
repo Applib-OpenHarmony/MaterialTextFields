@@ -55,8 +55,7 @@
           "type": "pageAbility"
         },
         "pages": [
-          "pages/filled_sample",
-          "pages/outlined_sample"
+          "pages/TextField_sample"
         ],
         "name": ".MainAbility",
         "window": {
