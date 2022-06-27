@@ -14,7 +14,7 @@ Focused TextFields:
 ![Alt text](./images/filled-labeled-focused.png "Filled Labeled" )   ![Alt text](./images/filled-nonlabeled-focused.png "Filled Non-labeled" )  
 ![Alt text](./images/outlined-focused-labeled.png "Outlined Labeled" )   ![Alt text](./images/outlined-focused-nonlabeled.png "Outlined Non-labeled" )
 
-<img src='./GIFs/filled.gif' width="250" height="300" >   <img src='./GIFs/outlined.gif' width="160" height="300" >
+<img src='./GIFs/textfield-sample.gif' width="225" height="400" >
 
 ### Dependencies
       Add following to the dependencies in package.json file of your project: "@ohos/MaterialTextField": "file:../MaterialTextField"
