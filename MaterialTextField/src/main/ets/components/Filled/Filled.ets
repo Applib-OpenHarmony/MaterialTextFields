@@ -167,7 +167,6 @@ export default struct Filled {
           }
         }
         this.entry = false;
-        console.log(this.focused + ':' + this.activationIndicatorWidth)
       }
     )
   }
