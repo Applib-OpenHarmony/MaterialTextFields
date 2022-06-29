@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { MaterialTextField, MaterialTextFieldOptions, MaterialTextFieldType } from "@ohos/MaterialTextField"
+import { MaterialTextField, MaterialTextFieldOptions, MaterialTextFieldType } from "@ohos/materialtextfield"
 
 @Entry
 @Component
