@@ -56,7 +56,7 @@ export class MaterialTextFieldOptions {
     placeholderFont?: Font;
     placeholderColor?: Color;
     fontColor?: Color;
-    fontSize?: number;
+    fontSize?: number|string;
     fontStyle?: FontStyle;
     fontWeight?: FontWeight;
     fontFamily?: ResourceStr;

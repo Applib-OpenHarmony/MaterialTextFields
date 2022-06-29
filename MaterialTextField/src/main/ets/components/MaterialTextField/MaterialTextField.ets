@@ -24,9 +24,24 @@ export default struct MaterialTextField {
   @State textFieldType: MaterialTextFieldType= MaterialTextFieldType.Filled //default type of textfield
   textFieldParameters: MaterialTextFieldOptions; //textfield parameters
 
+  /**
+   *
+   */
   aboutToAppear() {
+    this.convertFontSizeToFp();
   }
 
+  /**
+   * converts the text font size and placeholder font size to fp;
+   */
+  convertFontSizeToFp(){
+    if( this.textFieldParameters.textInputOptions.fontSize ){
+      this.textFieldParameters.textInputOptions.fontSize = this.textFieldParameters.textInputOptions.fontSize.toString() + 'fp';
+    }
+    if( this.textFieldParameters.textInputOptions.placeholderFont ) {
+      this.textFieldParameters.textInputOptions.placeholderFont.size = this.textFieldParameters.textInputOptions.placeholderFont.size.toString() + 'fp';
+    }
+  }
   /**
    * returns the height of textfield depending on the type of textfield
    */

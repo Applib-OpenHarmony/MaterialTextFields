@@ -220,7 +220,7 @@ export default struct Outlined {
                 .margin({ top: '-6vp', left: '-' + this.leadingIconSize })
                 .alignSelf(ItemAlign.Start)
                 .backgroundColor(Color.White)
-                .fontSize('11vp')
+                .fontSize('11fp')
                 .fontColor(this.labelColor)
                 .textAlign(TextAlign.Center)
                 .borderRadius('10vp');
@@ -338,8 +338,8 @@ export default struct Outlined {
       //helper text with character counter
       if (this.textFieldParameters.characterCounter) {
         Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
-          Text(this.helperText).height('16vp').fontSize('12vp').margin({ left: '16vp' }).fontColor(this.helperTextColor)
-          Text(this.numberOfCharacters + '').height('16vp').fontSize('12vp').margin({ right: '16vp' })
+          Text(this.helperText).height('16vp').fontSize('12fp').margin({ left: '16vp' }).fontColor(this.helperTextColor)
+          Text(this.numberOfCharacters + '').height('16vp').fontSize('12fp').margin({ right: '16vp' })
         }
         .width('280vp')
         .height('15vp')
@@ -350,7 +350,7 @@ export default struct Outlined {
         Text(this.helperText)
           .width('280vp')
           .height('16vp')
-          .fontSize('12vp')
+          .fontSize('1fvp')
           .margin({ left: '16vp' })
           .fontColor(this.helperTextColor)
       }

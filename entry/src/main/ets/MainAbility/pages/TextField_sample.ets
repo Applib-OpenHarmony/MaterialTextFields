@@ -98,13 +98,13 @@ struct Sample {
 
   build() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-      Text('Filled and Labeled').fontSize(15).padding(5)
+      Text('Filled and Labeled').fontSize('15fp').padding('5fp')
       MaterialTextField({ textFieldParameters: this.filledLabelParas, textFieldType: MaterialTextFieldType.Filled });
-      Text('Filled and Non-labeled').fontSize(15).margin({top:40})
+      Text('Filled and Non-labeled').fontSize('15fp').margin({top:'40vp'})
       MaterialTextField({ textFieldParameters: this.filledNonLabelParas, textFieldType: MaterialTextFieldType.Filled });
-      Text('Outlined and Labeled').fontSize(15).margin({top:40})
+      Text('Outlined and Labeled').fontSize('15fp').margin({top:'40vp'})
       MaterialTextField({ textFieldParameters: this.outlinedLabelParas, textFieldType: MaterialTextFieldType.Outlined });
-      Text('Outlined and Non-labeled').fontSize(15).margin({top:40})
+      Text('Outlined and Non-labeled').fontSize('15fp').margin({top:'40vp'})
       MaterialTextField({ textFieldParameters: this.outlinedNonLabelParas, textFieldType: MaterialTextFieldType.Outlined });
 
     }.width('100%')

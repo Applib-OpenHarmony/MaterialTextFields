@@ -239,7 +239,7 @@ export default struct Filled {
                   .width('100%')
                   .height(this.labelHeight)
                   .fontColor(this.labelColor)
-                  .fontSize('12vp')
+                  .fontSize('12fp')
                   .margin({ left: '16vp' })
                   .padding({ bottom: '1vp' })
                 TextInput({ placeholder: this.placeholder, text: this.input })
@@ -386,12 +386,12 @@ export default struct Filled {
             }) {
               Text(this.helperText)
                 .height('14vp')
-                .fontSize('12vp')
+                .fontSize('12fp')
                 .margin({ left: '16vp' })
                 .fontColor(this.helperTextColor)
               Text(this.numberOfCharacters + '')
                 .height('14vp')
-                .fontSize('12vp')
+                .fontSize('12fp')
                 .margin({ right: '16vp' })
                 .fontColor(this.helperTextColor)
             }
@@ -403,7 +403,7 @@ export default struct Filled {
             Text(this.helperText)
               .width('280vp')
               .height('16vp')
-              .fontSize('12vp')
+              .fontSize('12fp')
               .margin({ left: '16vp' })
               .fontColor(this.helperTextColor)
           }
