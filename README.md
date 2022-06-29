@@ -21,7 +21,7 @@ Focused TextFields:
             
       "dependencies": {
             ...
-            "@ohos/MaterialTextField": "file:../MaterialTextField"
+            "@ohos/materialtextfield": "file:../materialtextfield"
       }
 ### Import and install 
 ### APIs
