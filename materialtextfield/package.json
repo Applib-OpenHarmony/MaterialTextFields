@@ -1,0 +1,13 @@
+{
+  "name": "materialtextfield",
+  "description": "TextField Library that lets you create amazing textfields",
+  "ohos": {
+    "org": ""
+  },
+  "version": "1.0.0",
+  "main": "MaterialTextField.ets",
+  "types": "",
+  "repository": {},
+  "license": "ISC",
+  "dependencies": {}
+}
