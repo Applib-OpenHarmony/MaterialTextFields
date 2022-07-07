@@ -138,5 +138,11 @@ The following attributes are supported for TextFieldOptions:
       }
       
 ![Alt text](./images/defocused-out.png "Defocused Textfield")     ![Alt text](./images/error-example.png "Focused Textfield")     
+### Compatibility
+Supports OpenHarmony API version 8 and above
+
+### Code Contribution
+If you find any problems during usage, you can submit an [Issue](https://github.com/Applib-OpenHarmony/MaterialTextFields/issues) to us. Of course, we also welcome you to send us [PR](https://github.com/Applib-OpenHarmony/MaterialTextFields/pulls).
+
 ### License
 Licensed under the [Apache License, Version 2.0](./LICENSE)
